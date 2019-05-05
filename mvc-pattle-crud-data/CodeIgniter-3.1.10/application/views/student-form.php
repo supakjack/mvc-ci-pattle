@@ -24,8 +24,8 @@
                 <a class="navbar-brand">ระบบฟอร์มนักศึกษา</a>
                 <button type="submit" class="btn btn-outline-info" name="loadStudent" value="load">ดูนักศึกษา</button>
             </form>
-            <form class="form-inline col-3">
-                <input class="form-control mr-sm-2" type="search" placeholder="สืบค้นข้อมูล" aria-label="Search">
+            <form class="form-inline col-3" action="<?php echo base_url(); ?>index.php/form/searchStudent" method="post">
+                <input name="searchid" class="form-control mr-sm-2" type="search" placeholder="รหัสนิสิต" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ค้นหา</button>
             </form>
         </nav>

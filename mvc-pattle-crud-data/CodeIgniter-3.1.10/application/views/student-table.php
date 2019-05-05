@@ -51,7 +51,16 @@
                     <td><?php echo $key['id_stu'] ?></td>
                     <td><?php echo $key['prefixname'] . " " . $key['firstname'] . "    " . $key['lastname'] ?></td>
                     <td><?php echo $key['stampdate'] ?></td>
-                    <td><button type="button" class="btn btn-outline-danger">แก้ไข</button></td>
+                    <td>
+                        <form action="<?php echo base_url(); ?>index.php/form/editStudent" method="post">
+                            <button name="id" value="<?php echo $key['id'] ?>" type="submit" class="btn btn-outline-danger">แก้ไข</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="<?php echo base_url(); ?>index.php/form/removeStudent" method="post">
+                            <button name="id" value="<?php echo $key['id'] ?>" type="submit" class="btn btn-outline-danger">ลบ</button>
+                        </form>
+                    </td>
                 </tr>
             <?php
         }

@@ -65,4 +65,59 @@ class form extends CI_Controller
 		}
 	}
 
+	public function editStudent()
+	{
+		$data['id'] = $this->input->post('id');
+		$student = $this->student->getStudentId($data);
+		$data['student'] = $student;
+		//print_r($data);
+		$this->load->view('student-edit',$data);
+	}
+
+	public function updateStudent()
+	{
+		$student = $this->input->post();
+		if(!empty($student)){
+			$data = array(
+				'id' => $this->input->post('id'),
+				'prefixname' => $this->input->post('prefixname'),
+				'firstname' => $this->input->post('firstname'),
+				'lastname' => $this->input->post('lastname'),
+				'stampdate' => $this->input->post('date'),
+				'id_stu' => $this->input->post('idstudent'),
+				'code' => $this->input->post('code'),
+				'fly' => $this->input->post('fly'),
+				'shoot' => $this->input->post('shoot'),
+				);
+				if(!isset($data['code'])){
+					$data['code'] = 0;
+				}
+				if(!isset($data['fly'])){
+					$data['fly'] = 0;
+				}
+				if(!isset($data['shoot'])){
+					$data['shoot'] = 0;
+				}
+				print_r($data);
+			$this->student->updateStudent($data);
+			$this->showStudent();
+		}
+	}
+
+	public function searchStudent()
+	{
+		$data['id_stu'] = $this->input->post('searchid');
+		$student = $this->student->searchStudent($data);
+		$data['student'] = $student;
+		//print_r($data);
+		$this->load->view('student-search',$data);
+	}
+
+	public function removeStudent()
+	{
+		$data['id'] = $this->input->post('id');
+		$student = $this->student->removeStudent($data);
+		$this->showStudent();
+	}
+
 }
